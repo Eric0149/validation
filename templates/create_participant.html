@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Participant{% endblock %}
+<style>
+
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #143849;
+  }
+  .container {
+    max-width: 800px;
+    margin: 80px 10px 0px 400px;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px #b3b3b3;
+  }
+  .results{
+    display: flex;
+    padding: 10px;
+    background: #000;
+    color: white
+  }
+  h2 {
+    color: #9ed4c4;
+  }
+  form {
+      margin-top: 20px;
+      display: grid;
+      justify-content: center;
+      max-height: 400px; /* Set a maximum height for the form */
+      overflow-y: auto; /* Enable vertical scrollbar when content exceeds the height */
+      margin: 0 auto; /* Center the form horizontally */
+      color: #9ed4c4;
+  }
+  input,
+  select {
+    text-align: center;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #4caf50;
+    color: #9ed4c4;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #2e6431;
+  }
+  h3 {
+    margin-top: 20px;
+    color: #9ed4c4;
+  }
+  p {
+    margin-bottom: 10px;
+  }
+  .popup_container {
+  position: relative;
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #333;
+  }
+  a{
+    color: #032330;
+  }
+</style>
+
+<div class="container">
+{% block content %}
+  <h2>Create Participant</h2>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if participant %}
+  <div class="popup_container">
+    <h3>Participant Details:</h3>
+    <p>Name: {{ participant.first_name }} {{ participant.last_name }}</p>
+    <p>Date of Birth: {{ participant.date_of_birth }}</p>
+    <p>Phone: {{ participant.phone }}</p>
+    <a href="{% url 'add_vehicle' %}">add vehicle</a>
+  </div>
+  {% endif %}
+{% endblock %}
+</div>

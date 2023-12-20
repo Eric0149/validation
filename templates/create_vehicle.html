@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Vehicle{% endblock %}
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #13283a;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(2, 2, 2, 0.1);
+    box-shadow: 0 0 10px #fcfafa;
+  }
+
+  h2 {
+    color: #9ed4c4;
+  }
+
+  form {
+      margin-top: 20px;
+      display: grid;
+      justify-content: center;
+      max-height: 400px; /* Set a maximum height for the form */
+      overflow-y: auto; /* Enable vertical scrollbar when content exceeds the height */
+      margin: 0 auto; /* Center the form horizontally */
+      color: #9ed4c4;
+  }
+
+  input,
+  select {
+    text-align: center;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: #9ed4c4;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #2e6431;
+  }
+
+  h3 {
+    margin-top: 20px;
+    color: #9ed4c4;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+</style>
+<div class="container"></div>
+{% block content %}
+
+  <h2>Add Vehicle</h2>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a style="color: rgb(7, 241, 171)" href="{% url 'add_part' %}"><=back</a>
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if vehicle %}
+    <h3>Registered Vehicle Details:</h3>
+    <p>Plate number: {{ vehicle.plate }}</p>
+    <p>Maker: {{ vehicle.make }}</p>
+    <p>Date of Manufacturing: {{ vehicle.man_date }}</p>
+    <!-- Add other fields as needed -->
+  {% endif %}
+{% endblock %}
+</div>

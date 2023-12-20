@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Come on{% endblock %}</title>
+    <!-- Add your CSS links or styles here -->
+    <style>
+        body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color:  #082b3b;
+        }
+      
+        .container {
+          max-width: 800px;
+          margin: 80px 10px 0px 400px;
+          padding: 25px;
+          background-color: rgba(235, 238, 245, 0.1);
+          box-shadow: 0 0 10px #b3b3b3;
+        }
+      
+        h2 {
+          color: #9ed4c4;
+        }
+      
+        form {
+            margin-top: 20px;
+            display: grid;
+            justify-content: center;
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 0 auto;
+            color: #9ed4c4;
+        }
+      
+        input,
+        select {
+          text-align: center;
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 10px;
+          
+          box-sizing: border-box;
+        }
+      
+        button {
+          background-color: #4caf50;
+          color: #9ed4c4;
+          padding: 10px 15px;
+          border: none;
+          cursor: pointer;
+        }
+      
+        button:hover {
+          background-color: #2e6431;
+        }
+      
+        h3 {
+          margin-top: 20px;
+          color: #9ed4c4;
+        }
+      
+        p {
+          margin-bottom: 10px;
+        }
+
+        a {
+          color: #06c746;
+          text-decoration-style: none;
+        }
+      </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
